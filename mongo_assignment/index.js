@@ -4,9 +4,9 @@ const app = express();
 
 app.use(express.json());
 
-mongoose.connect("mongodb://localhost:27017/Mongo_assign")
-.then(()=>console.log("Mongodb connected successfully"))
-.catch((error)=>console.log("Mongodb connection failed",error))
+mongoose.connect(process.env.MONGO_URL)
+  .then(() => console.log("MongoDB connected successfully"))
+  .catch((err) => console.log("MongoDB connection failed", err));
 
 const bookSchema = new mongoose.Schema({
     name:String,
